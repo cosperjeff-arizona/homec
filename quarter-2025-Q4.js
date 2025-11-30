@@ -416,10 +416,10 @@ const quarterData = {
               date: "2025-12-19",
               dayOfWeek: "friday",
               time: "7:30 AM - 4:00 PM",
-              title: "Spidey Last Day Before Break",
+              title: "Spidey at Preschool - LAST DAY",
               category: "kid",
               type: "milestone",
-              notes: "Preschool winter break starts"
+              notes: "Winter break starts after today - school closed through Jan 5"
             },
             {
               id: "date-night",
@@ -498,10 +498,10 @@ const quarterData = {
               date: "2025-12-22",
               dayOfWeek: "monday",
               time: "all-day",
-              title: "Spidey Home (Winter Break)",
+              title: "Spidey Home - Winter Break",
               category: "kid",
               type: "info",
-              notes: "No preschool this week"
+              notes: "Preschool closed Dec 19 - Jan 5"
             },
             {
               id: "dec-23",
@@ -602,10 +602,10 @@ const quarterData = {
               date: "2025-12-29",
               dayOfWeek: "monday",
               time: "all-day",
-              title: "Spidey Home (Winter Break continues)",
+              title: "Spidey Home - Winter Break",
               category: "kid",
               type: "info",
-              notes: "Last week before preschool resumes"
+              notes: "Preschool closed through Jan 5 - resumes Jan 6"
             },
             {
               id: "dec-30",
