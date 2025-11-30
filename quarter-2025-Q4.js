@@ -186,6 +186,16 @@ const quarterData = {
               recurring: true
             },
             {
+              id: "dec-02-preschool",
+              date: "2025-12-02",
+              dayOfWeek: "tuesday",
+              time: "7:30 AM - 4:00 PM",
+              title: "Spidey at Preschool",
+              category: "kid",
+              type: "recurring",
+              recurring: true
+            },
+            {
               id: "dec-02",
               date: "2025-12-02",
               dayOfWeek: "tuesday",
@@ -196,12 +206,42 @@ const quarterData = {
               recurring: true
             },
             {
+              id: "dec-03-preschool",
+              date: "2025-12-03",
+              dayOfWeek: "wednesday",
+              time: "7:30 AM - 4:00 PM",
+              title: "Spidey at Preschool",
+              category: "kid",
+              type: "recurring",
+              recurring: true
+            },
+            {
               id: "dec-03",
               date: "2025-12-03",
               dayOfWeek: "wednesday",
               time: "flexible",
               title: "Laundry Day",
               category: "household",
+              type: "recurring",
+              recurring: true
+            },
+            {
+              id: "dec-04-preschool",
+              date: "2025-12-04",
+              dayOfWeek: "thursday",
+              time: "7:30 AM - 4:00 PM",
+              title: "Spidey at Preschool",
+              category: "kid",
+              type: "recurring",
+              recurring: true
+            },
+            {
+              id: "dec-05-preschool",
+              date: "2025-12-05",
+              dayOfWeek: "friday",
+              time: "7:30 AM - 4:00 PM",
+              title: "Spidey at Preschool",
+              category: "kid",
               type: "recurring",
               recurring: true
             },
@@ -265,6 +305,26 @@ const quarterData = {
           
           events: [
             {
+              id: "dec-08-preschool",
+              date: "2025-12-08",
+              dayOfWeek: "monday",
+              time: "7:30 AM - 4:00 PM",
+              title: "Spidey at Preschool",
+              category: "kid",
+              type: "recurring",
+              recurring: true
+            },
+            {
+              id: "dec-09-preschool",
+              date: "2025-12-09",
+              dayOfWeek: "tuesday",
+              time: "7:30 AM - 4:00 PM",
+              title: "Spidey at Preschool",
+              category: "kid",
+              type: "recurring",
+              recurring: true
+            },
+            {
               id: "dec-09",
               date: "2025-12-09",
               dayOfWeek: "tuesday",
@@ -275,12 +335,42 @@ const quarterData = {
               recurring: true
             },
             {
+              id: "dec-10-preschool",
+              date: "2025-12-10",
+              dayOfWeek: "wednesday",
+              time: "7:30 AM - 4:00 PM",
+              title: "Spidey at Preschool",
+              category: "kid",
+              type: "recurring",
+              recurring: true
+            },
+            {
               id: "dec-10",
               date: "2025-12-10",
               dayOfWeek: "wednesday",
               time: "flexible",
               title: "Laundry Day",
               category: "household",
+              type: "recurring",
+              recurring: true
+            },
+            {
+              id: "dec-11-preschool",
+              date: "2025-12-11",
+              dayOfWeek: "thursday",
+              time: "7:30 AM - 4:00 PM",
+              title: "Spidey at Preschool",
+              category: "kid",
+              type: "recurring",
+              recurring: true
+            },
+            {
+              id: "dec-12-preschool",
+              date: "2025-12-12",
+              dayOfWeek: "friday",
+              time: "7:30 AM - 4:00 PM",
+              title: "Spidey at Preschool",
+              category: "kid",
               type: "recurring",
               recurring: true
             },
@@ -368,6 +458,16 @@ const quarterData = {
               recurring: true
             },
             {
+              id: "dec-16-preschool",
+              date: "2025-12-16",
+              dayOfWeek: "tuesday",
+              time: "7:30 AM - 4:00 PM",
+              title: "Spidey at Preschool",
+              category: "kid",
+              type: "recurring",
+              recurring: true
+            },
+            {
               id: "dec-16-office",
               date: "2025-12-16",
               dayOfWeek: "tuesday",
@@ -389,6 +489,16 @@ const quarterData = {
               notes: "Family reunited!"
             },
             {
+              id: "dec-17-preschool",
+              date: "2025-12-17",
+              dayOfWeek: "wednesday",
+              time: "7:30 AM - 4:00 PM",
+              title: "Spidey at Preschool",
+              category: "kid",
+              type: "recurring",
+              recurring: true
+            },
+            {
               id: "dec-17",
               date: "2025-12-17",
               dayOfWeek: "wednesday",
@@ -398,6 +508,16 @@ const quarterData = {
               type: "recurring",
               recurring: true,
               notes: "Catch up from trip laundry"
+            },
+            {
+              id: "dec-18-preschool",
+              date: "2025-12-18",
+              dayOfWeek: "thursday",
+              time: "7:30 AM - 4:00 PM",
+              title: "Spidey at Preschool",
+              category: "kid",
+              type: "recurring",
+              recurring: true
             },
             {
               id: "gift-wrap-session",
