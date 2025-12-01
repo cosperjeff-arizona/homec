@@ -91,7 +91,7 @@ class HomecCalendar {
     card.appendChild(header);
 
     // Calendar grid
-    const calendarGrid = this.createCalendarGrid(month);
+    const calendarGrid = this.createCalendarGrid(month, monthKey);
     card.appendChild(calendarGrid);
 
     // Milestones and Aspirational sections
@@ -104,7 +104,7 @@ class HomecCalendar {
     return card;
   }
 
-  createCalendarGrid(month) {
+  createCalendarGrid(month, monthKey) {
     const container = document.createElement('div');
     container.className = 'calendar-grid';
 
@@ -117,8 +117,20 @@ class HomecCalendar {
       container.appendChild(header);
     });
 
+    // Map month name to number
+    const monthMap = {
+      'october': 10,
+      'november': 11,
+      'december': 12,
+      'january': 1,
+      'february': 2,
+      'march': 3
+    };
+    
+    const year = this.data.meta.year;
+    const monthNum = monthMap[monthKey];
+    
     // Get first day and number of days in month
-    const [year, monthNum] = month.monthKey.split('-');
     const firstDay = new Date(year, monthNum - 1, 1);
     const lastDay = new Date(year, monthNum, 0);
     const daysInMonth = lastDay.getDate();
