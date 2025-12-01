@@ -230,7 +230,8 @@ body {
 /* Calendar Grid */
 .calendar-grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  /* FIXED: minmax(0, 1fr) prevents columns from expanding beyond their width */
+  grid-template-columns: repeat(7, minmax(0, 1fr));
   gap: 2px;
   background: rgba(255, 255, 255, 0.05);
   border-radius: var(--radius-sm);
