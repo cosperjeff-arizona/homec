@@ -54,12 +54,12 @@ class HomecCalendar {
   }
 
   getDateKey(dateOrStr) {
-    // FIXED: Return strings directly to avoid timezone shifting
+    // Return strings directly to avoid timezone shifting
     if (typeof dateOrStr === 'string') {
       return dateOrStr;
     }
     
-    // Handle Date objects (like 'today')
+    // Handle Date objects
     const date = dateOrStr;
     return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
   }
@@ -226,20 +226,26 @@ class HomecCalendar {
 
   createEventDot(event) {
     const dot = document.createElement('div');
-    dot.className = 'event-dot';
+    dot.className = `event-dot ${event.category}`; // Added category class for flexibility
     
     const category = this.data.categories[event.category];
     if (category) {
       dot.style.backgroundColor = category.color;
-      dot.style.borderLeftColor = category.color;
+      dot.style.borderLeftColor = 'rgba(0,0,0,0.2)'; // Use transparency for side border
     }
 
     if (event.priority === 'high') {
       dot.classList.add('priority');
     }
 
-    // Show title or time + title
-    const text = event.time ? `${event.time.split('-')[0].trim()} ${event.title}` : event.title;
+    // UPDATED: Smarter text handling
+    let text = event.title;
+    if (event.time && event.time.toLowerCase() !== 'all-day') {
+       // Only prepend time if it's NOT "all-day"
+       const shortTime = event.time.split('-')[0].trim();
+       text = `${shortTime} ${event.title}`;
+    }
+    
     dot.textContent = text;
 
     return dot;
