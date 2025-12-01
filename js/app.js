@@ -53,8 +53,14 @@ class HomecCalendar {
     return eventsByDate;
   }
 
-  getDateKey(dateStr) {
-    const date = new Date(dateStr);
+  getDateKey(dateOrStr) {
+    // FIXED: Return strings directly to avoid timezone shifting
+    if (typeof dateOrStr === 'string') {
+      return dateOrStr;
+    }
+    
+    // Handle Date objects (like 'today')
+    const date = dateOrStr;
     return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
   }
 
@@ -259,7 +265,7 @@ class HomecCalendar {
     const modal = document.getElementById('event-modal');
     const modalBody = document.getElementById('modal-body');
 
-    const date = new Date(dateKey);
+    const date = new Date(dateKey + 'T12:00:00'); // Safe parsing for display
     const dateStr = date.toLocaleDateString('en-US', { 
       weekday: 'long', 
       year: 'numeric', 
@@ -436,14 +442,14 @@ class HomecCalendar {
 
     // Immediate (next 2 weeks)
     const immediate = allEvents.filter(e => {
-      const eventDate = new Date(e.date);
+      const eventDate = new Date(e.date + 'T12:00:00');
       return eventDate >= today && eventDate <= twoWeeksFromNow;
     });
     this.renderListSection('list-immediate', immediate);
 
     // This month
     const thisMonth = allEvents.filter(e => {
-      const eventDate = new Date(e.date);
+      const eventDate = new Date(e.date + 'T12:00:00');
       return eventDate.getMonth() === today.getMonth() && eventDate.getFullYear() === today.getFullYear();
     });
     this.renderListSection('list-month', thisMonth);
@@ -627,17 +633,17 @@ class HomecCalendar {
 
   // Utility functions
   formatDate(dateStr) {
-    const date = new Date(dateStr);
+    const date = new Date(dateStr + 'T12:00:00');
     return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
   }
 
   formatShortDate(dateStr) {
-    const date = new Date(dateStr);
+    const date = new Date(dateStr + 'T12:00:00');
     return date.toLocaleDateString('en-US', { month: 'numeric', day: 'numeric' });
   }
 
   formatFullDate(dateStr) {
-    const date = new Date(dateStr);
+    const date = new Date(dateStr + 'T12:00:00');
     return date.toLocaleDateString('en-US', { 
       weekday: 'long',
       year: 'numeric',
@@ -647,7 +653,7 @@ class HomecCalendar {
   }
 
   getDayName(dateStr) {
-    const date = new Date(dateStr);
+    const date = new Date(dateStr + 'T12:00:00');
     return date.toLocaleDateString('en-US', { weekday: 'short' });
   }
 }
