@@ -230,7 +230,7 @@ body {
 /* Calendar Grid */
 .calendar-grid {
   display: grid;
-  /* FIXED: minmax(0, 1fr) prevents columns from expanding beyond their width */
+  /* minmax(0, 1fr) ensures columns don't expand beyond width */
   grid-template-columns: repeat(7, minmax(0, 1fr));
   gap: 2px;
   background: rgba(255, 255, 255, 0.05);
@@ -298,20 +298,30 @@ body {
   overflow: hidden;
 }
 
+/* UPDATED: Event Dot Styling */
 .event-dot {
-  font-size: 0.65rem;
-  padding: 2px 4px;
-  border-radius: 3px;
-  color: white;
-  font-weight: 500;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  border-left: 3px solid;
+  font-size: 0.7rem; 
+  padding: 4px 6px;
+  border-radius: 4px;
+  
+  /* Dark text for contrast against pastel colors */
+  color: var(--bg-primary); 
+  font-weight: 700;
+  
+  /* Text Wrapping */
+  white-space: normal;
+  height: auto;
+  line-height: 1.2;
+  
+  /* Use subtle border instead of solid color border */
+  border-left: 4px solid rgba(0,0,0, 0.2);
+  margin-bottom: 2px;
 }
 
 .event-dot.priority {
-  box-shadow: 0 0 8px rgba(255, 107, 107, 0.5);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 1;
 }
 
 .more-events {
