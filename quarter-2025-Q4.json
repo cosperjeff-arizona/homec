@@ -46,13 +46,63 @@
           "weekNumber": 49,
           "theme": "Holiday prep begins",
           "events": [
-            { "id": "dec-01", "date": "2025-12-01", "title": "Spidey at Preschool", "time": "7:30 AM - 4:00 PM", "category": "kid", "recurring": true },
-            { "id": "dec-02", "date": "2025-12-02", "title": "Spin in Office", "time": "all-day", "category": "work", "recurring": true },
-            { "id": "dec-03", "date": "2025-12-03", "title": "Laundry Day", "time": "flexible", "category": "household", "recurring": true },
-            { "id": "dec-06", "date": "2025-12-06", "title": "Niece's Basketball", "time": "morning", "category": "family", "recurring": true },
-            { "id": "dec-06-meal", "date": "2025-12-06", "title": "Meal Planning Session", "time": "evening", "category": "household", "recurring": true },
-            { "id": "dec-06-laundry", "date": "2025-12-06", "title": "Laundry Day", "time": "flexible", "category": "household", "recurring": true },
-            { "id": "gift-shopping-start", "date": "2025-12-07", "title": "Start Holiday Shopping", "time": "afternoon", "category": "household", "priority": "medium", "notes": "Get ahead of the rush" }
+            {
+              "id": "dec-01",
+              "date": "2025-12-01",
+              "title": "Spidey at Preschool",
+              "time": "7:30 AM - 4:00 PM",
+              "category": "kid",
+              "recurring": true
+            },
+            {
+              "id": "dec-02",
+              "date": "2025-12-02",
+              "title": "Spin in Office",
+              "time": "all-day",
+              "category": "work",
+              "recurring": true
+            },
+            {
+              "id": "dec-03",
+              "date": "2025-12-03",
+              "title": "Laundry Day",
+              "time": "flexible",
+              "category": "household",
+              "recurring": true
+            },
+            {
+              "id": "dec-06",
+              "date": "2025-12-06",
+              "title": "Niece's Basketball",
+              "time": "morning",
+              "category": "family",
+              "recurring": true
+            },
+            {
+              "id": "dec-06-meal",
+              "date": "2025-12-06",
+              "title": "Meal Planning Session",
+              "time": "evening",
+              "category": "household",
+              "recurring": true
+            },
+            {
+              "id": "dec-06-laundry",
+              "date": "2025-12-06",
+              "title": "Laundry Day",
+              "time": "flexible",
+              "category": "household",
+              "recurring": true
+            },
+            {
+              "id": "gift-shopping-start",
+              "date": "2025-12-07",
+              "title": "Start Holiday Shopping",
+              "time": "afternoon",
+              "category": "household",
+              "priority": "medium",
+              "notes": "Get ahead of the rush"
+            }
           ]
         },
         {
@@ -60,11 +110,58 @@
           "weekNumber": 50,
           "theme": "Pre-Tucson prep week",
           "events": [
-            { "id": "dec-09", "date": "2025-12-09", "title": "Spin in Office", "time": "all-day", "category": "work", "recurring": true },
-            { "id": "dec-10", "date": "2025-12-10", "title": "Laundry Day", "time": "flexible", "category": "household", "recurring": true },
-            { "id": "tucson-prep-deadline", "date": "2025-12-10", "title": "Tucson Trip Prep Deadline", "time": "evening", "category": "travel", "priority": "high", "notes": "All packing should be done tonight" },
-            { "id": "dec-13-meal", "date": "2025-12-13", "title": "Meal Planning Session", "time": "evening", "category": "household", "recurring": true, "notes": "May need to do early or skip" },
-            { "id": "tucson-trip-main", "date": "2025-12-12", "title": "Tucson Trip", "time": "all-day", "category": "travel", "priority": "high", "notes": "Family trip through Tuesday" }
+            {
+              "id": "dec-09",
+              "date": "2025-12-09",
+              "title": "Spin in Office",
+              "time": "all-day",
+              "category": "work",
+              "recurring": true
+            },
+            {
+              "id": "dec-10",
+              "date": "2025-12-10",
+              "title": "Laundry Day",
+              "time": "flexible",
+              "category": "household",
+              "recurring": true
+            },
+            {
+              "id": "tucson-prep-deadline",
+              "date": "2025-12-10",
+              "title": "Tucson Trip Prep Deadline",
+              "time": "evening",
+              "category": "travel",
+              "priority": "high",
+              "notes": "All packing should be done tonight"
+            },
+            {
+              "id": "dec-13-meal",
+              "date": "2025-12-13",
+              "title": "Meal Planning Session",
+              "time": "evening",
+              "category": "household",
+              "recurring": true,
+              "notes": "May need to do early or skip"
+            },
+            {
+              "id": "tucson-trip-main",
+              "date": "2025-12-12",
+              "title": "Tucson Trip",
+              "time": "all-day",
+              "category": "travel",
+              "priority": "high",
+              "notes": "Family trip through Tuesday"
+            },
+            {
+              "id": "evt-1764746631206",
+              "title": "Spidey at Preschool",
+              "date": "2025-12-08",
+              "time": "7:30 AM - 4:00 PM",
+              "category": "kid",
+              "notes": "",
+              "priority": null
+            }
           ]
         },
         {
@@ -72,16 +169,89 @@
           "weekNumber": 51,
           "theme": "Return from Tucson, Christmas prep ramps up",
           "events": [
-            { "id": "dec-15", "date": "2025-12-15", "title": "Spidey at Preschool", "time": "7:30 AM - 4:00 PM", "category": "kid", "recurring": true },
-            { "id": "dec-16-office", "date": "2025-12-16", "title": "Spin in Office", "time": "all-day", "category": "work", "recurring": true },
-            { "id": "tucson-return-gs", "date": "2025-12-16", "title": "Ghost Spider & Trace-E Return", "time": "afternoon", "category": "travel", "type": "milestone" },
-            { "id": "dec-17", "date": "2025-12-17", "title": "Laundry Day", "time": "flexible", "category": "household", "recurring": true },
-            { "id": "gift-wrap-session", "date": "2025-12-18", "title": "Gift Wrapping Session", "time": "evening", "category": "household", "priority": "high", "notes": "Must be done before date night Friday" },
-            { "id": "dec-19-preschool-last", "date": "2025-12-19", "title": "Spidey at Preschool - LAST DAY", "time": "7:30 AM - 4:00 PM", "category": "kid", "type": "milestone" },
-            { "id": "date-night", "date": "2025-12-20", "title": "Pre-Christmas Date Night ❤️", "time": "evening", "category": "family", "priority": "high", "notes": "PROTECTED TIME" },
-            { "id": "dec-20-meal", "date": "2025-12-20", "title": "Meal Planning Session", "time": "afternoon", "category": "household", "recurring": true },
-            { "id": "dec-20-laundry", "date": "2025-12-20", "title": "Laundry Day", "time": "morning", "category": "household", "recurring": true },
-            { "id": "christmas-prep-final", "date": "2025-12-21", "title": "Final Christmas Prep Day", "time": "all-day", "category": "household", "priority": "high", "notes": "Cook/prep dish, pack bags" }
+            {
+              "id": "dec-15",
+              "date": "2025-12-15",
+              "title": "Spidey at Preschool",
+              "time": "7:30 AM - 4:00 PM",
+              "category": "kid",
+              "recurring": true
+            },
+            {
+              "id": "dec-16-office",
+              "date": "2025-12-16",
+              "title": "Spin in Office",
+              "time": "all-day",
+              "category": "work",
+              "recurring": true
+            },
+            {
+              "id": "tucson-return-gs",
+              "date": "2025-12-16",
+              "title": "Ghost Spider & Trace-E Return",
+              "time": "afternoon",
+              "category": "travel",
+              "type": "milestone"
+            },
+            {
+              "id": "dec-17",
+              "date": "2025-12-17",
+              "title": "Laundry Day",
+              "time": "flexible",
+              "category": "household",
+              "recurring": true
+            },
+            {
+              "id": "gift-wrap-session",
+              "date": "2025-12-18",
+              "title": "Gift Wrapping Session",
+              "time": "evening",
+              "category": "household",
+              "priority": "high",
+              "notes": "Must be done before date night Friday"
+            },
+            {
+              "id": "dec-19-preschool-last",
+              "date": "2025-12-19",
+              "title": "Spidey at Preschool - LAST DAY",
+              "time": "7:30 AM - 4:00 PM",
+              "category": "kid",
+              "type": "milestone"
+            },
+            {
+              "id": "date-night",
+              "date": "2025-12-20",
+              "title": "Pre-Christmas Date Night ❤️",
+              "time": "evening",
+              "category": "family",
+              "priority": "high",
+              "notes": "PROTECTED TIME"
+            },
+            {
+              "id": "dec-20-meal",
+              "date": "2025-12-20",
+              "title": "Meal Planning Session",
+              "time": "afternoon",
+              "category": "household",
+              "recurring": true
+            },
+            {
+              "id": "dec-20-laundry",
+              "date": "2025-12-20",
+              "title": "Laundry Day",
+              "time": "morning",
+              "category": "household",
+              "recurring": true
+            },
+            {
+              "id": "christmas-prep-final",
+              "date": "2025-12-21",
+              "title": "Final Christmas Prep Day",
+              "time": "all-day",
+              "category": "household",
+              "priority": "high",
+              "notes": "Cook/prep dish, pack bags"
+            }
           ]
         },
         {
@@ -89,14 +259,63 @@
           "weekNumber": 52,
           "theme": "CHRISTMAS WEEK 🎄",
           "events": [
-            { "id": "dec-22", "date": "2025-12-22", "title": "Spidey Home - Winter Break", "time": "all-day", "category": "kid", "type": "info" },
-            { "id": "dec-23", "date": "2025-12-23", "title": "Spin Working from Home", "time": "all-day", "category": "work", "notes": "WFH instead of office" },
-            { "id": "dec-24", "date": "2025-12-24", "title": "Christmas Eve", "time": "evening", "category": "holiday", "type": "family-time" },
-            { "id": "christmas", "date": "2025-12-25", "title": "🎄 Christmas at GS's Parents", "time": "all-day", "category": "holiday", "priority": "high", "allDay": true },
-            { "id": "boxing-day-family", "date": "2025-12-26", "title": "Day with Spin's Parents", "time": "all-day", "category": "family", "allDay": true },
-            { "id": "dec-27", "date": "2025-12-27", "title": "Recovery Day", "time": "all-day", "category": "family", "type": "downtime" },
-            { "id": "dec-27-meal", "date": "2025-12-27", "title": "Meal Planning Session", "time": "evening", "category": "household", "recurring": true },
-            { "id": "dec-28", "date": "2025-12-28", "title": "Decompress & Organize", "time": "flexible", "category": "household", "notes": "Put away new toys/gifts" }
+            {
+              "id": "dec-22",
+              "date": "2025-12-22",
+              "title": "Spidey Home - Winter Break",
+              "time": "all-day",
+              "category": "kid",
+              "type": "info"
+            },
+            {
+              "id": "dec-24",
+              "date": "2025-12-24",
+              "title": "Christmas Eve",
+              "time": "evening",
+              "category": "holiday",
+              "type": "family-time"
+            },
+            {
+              "id": "christmas",
+              "date": "2025-12-25",
+              "title": "🎄 Christmas at GS's Parents",
+              "time": "all-day",
+              "category": "holiday",
+              "priority": "high",
+              "allDay": true
+            },
+            {
+              "id": "boxing-day-family",
+              "date": "2025-12-26",
+              "title": "Day with Spin's Parents",
+              "time": "all-day",
+              "category": "family",
+              "allDay": true
+            },
+            {
+              "id": "dec-27",
+              "date": "2025-12-27",
+              "title": "Recovery Day",
+              "time": "all-day",
+              "category": "family",
+              "type": "downtime"
+            },
+            {
+              "id": "dec-27-meal",
+              "date": "2025-12-27",
+              "title": "Meal Planning Session",
+              "time": "evening",
+              "category": "household",
+              "recurring": true
+            },
+            {
+              "id": "dec-28",
+              "date": "2025-12-28",
+              "title": "Decompress & Organize",
+              "time": "flexible",
+              "category": "household",
+              "notes": "Put away new toys/gifts"
+            }
           ]
         },
         {
@@ -104,32 +323,112 @@
           "weekNumber": 1,
           "theme": "New Year's Week",
           "events": [
-            { "id": "dec-29", "date": "2025-12-29", "title": "Spidey Home - Winter Break", "time": "all-day", "category": "kid", "type": "info" },
-            { "id": "dec-30", "date": "2025-12-30", "title": "Spin Working from Home", "time": "all-day", "category": "work" },
-            { "id": "nye", "date": "2025-12-31", "title": "🎉 New Year's Eve", "time": "evening", "category": "holiday", "status": "uncertain", "notes": "Plans TBD" }
+            {
+              "id": "dec-29",
+              "date": "2025-12-29",
+              "title": "Spidey back to school",
+              "time": "all-day",
+              "category": "kid",
+              "type": "info",
+              "notes": "",
+              "priority": null
+            },
+            {
+              "id": "dec-30",
+              "date": "2025-12-30",
+              "title": "Spin in Office",
+              "time": "all-day",
+              "category": "work",
+              "notes": "",
+              "priority": null
+            },
+            {
+              "id": "nye",
+              "date": "2025-12-31",
+              "title": "🎉 New Year's Eve",
+              "time": "evening",
+              "category": "holiday",
+              "status": "uncertain",
+              "notes": "Plans TBD"
+            }
           ]
         }
       ],
       "milestones": [
-        { "date": "2025-12-12", "title": "Tucson Trip Begins", "category": "travel", "icon": "🚗" },
-        { "date": "2025-12-19", "title": "Winter Break Starts", "category": "kid", "icon": "🎄" },
-        { "date": "2025-12-25", "title": "Christmas Day", "category": "holiday", "icon": "🎁" }
+        {
+          "date": "2025-12-12",
+          "title": "Tucson Trip Begins",
+          "category": "travel",
+          "icon": "🚗"
+        },
+        {
+          "date": "2025-12-19",
+          "title": "Winter Break Starts",
+          "category": "kid",
+          "icon": "🎄"
+        },
+        {
+          "date": "2025-12-25",
+          "title": "Christmas Day",
+          "category": "holiday",
+          "icon": "🎁"
+        }
       ],
       "aspirational": [
-        { "id": "asp-002", "title": "Christmas Lights", "category": "family", "timeNeeded": "1-2 hours", "status": "unscheduled" },
-        { "id": "asp-003", "title": "Bake Cookies", "category": "family", "timeNeeded": "2 hours", "status": "unscheduled" }
+        {
+          "id": "asp-002",
+          "title": "Christmas Lights",
+          "category": "family",
+          "timeNeeded": "1-2 hours",
+          "status": "unscheduled"
+        },
+        {
+          "id": "asp-003",
+          "title": "Bake Cookies",
+          "category": "family",
+          "timeNeeded": "2 hours",
+          "status": "unscheduled"
+        }
       ]
     }
   },
   "conflicts": [],
   "prep": {},
   "categories": {
-    "family": { "color": "#4ECDC4", "icon": "👨‍👩‍👧‍👦", "label": "Family" },
-    "work": { "color": "#FF6B6B", "icon": "💼", "label": "Work" },
-    "kid": { "color": "#FFE66D", "icon": "🎨", "label": "Kids" },
-    "household": { "color": "#95E1D3", "icon": "🏡", "label": "Household" },
-    "holiday": { "color": "#DDA15E", "icon": "🎊", "label": "Holiday" },
-    "travel": { "color": "#87CEEB", "icon": "✈️", "label": "Travel" },
-    "health": { "color": "#FFA07A", "icon": "🏥", "label": "Health" }
+    "family": {
+      "color": "#4ECDC4",
+      "icon": "👨‍👩‍👧‍👦",
+      "label": "Family"
+    },
+    "work": {
+      "color": "#FF6B6B",
+      "icon": "💼",
+      "label": "Work"
+    },
+    "kid": {
+      "color": "#FFE66D",
+      "icon": "🎨",
+      "label": "Kids"
+    },
+    "household": {
+      "color": "#95E1D3",
+      "icon": "🏡",
+      "label": "Household"
+    },
+    "holiday": {
+      "color": "#DDA15E",
+      "icon": "🎊",
+      "label": "Holiday"
+    },
+    "travel": {
+      "color": "#87CEEB",
+      "icon": "✈️",
+      "label": "Travel"
+    },
+    "health": {
+      "color": "#FFA07A",
+      "icon": "🏥",
+      "label": "Health"
+    }
   }
 }
