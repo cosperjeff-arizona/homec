@@ -552,3 +552,89 @@ input:focus, select:focus, textarea:focus {
     grid-template-columns: 1fr;
   }
 }
+/* ... [Keep all your existing CSS for variables, body, and grids] ... */
+
+/* Force 2-Column Layout for Active Months */
+.months-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Strictly 2 columns */
+  gap: var(--spacing-lg);
+}
+
+/* HORIZON SECTION STYLES */
+.horizon-section {
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--border);
+}
+
+.section-title {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: var(--spacing-md);
+}
+
+.horizon-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.horizon-month-group {
+  background: var(--bg-secondary);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+}
+
+.horizon-month-title {
+  font-size: 1.1rem;
+  color: var(--accent);
+  margin-bottom: var(--spacing-md);
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.horizon-events {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.horizon-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px;
+  border-radius: var(--radius-sm);
+  transition: background 0.2s;
+}
+
+.horizon-item:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+.horizon-date {
+  font-weight: 700;
+  color: var(--text-secondary);
+  width: 24px;
+  text-align: center;
+}
+
+.horizon-icon {
+  font-size: 1.1rem;
+}
+
+.priority-text {
+  color: #ff9999;
+  font-weight: 600;
+}
+
+/* Mobile responsive update */
+@media (max-width: 768px) {
+  .months-grid {
+    grid-template-columns: 1fr; /* Stack on phone */
+  }
+}

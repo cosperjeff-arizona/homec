@@ -4,147 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HOMEC - Family Calendar</title>
-    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="app-container">
         <header class="app-header">
             <div class="header-content">
-                <div class="header-left">
-                    <h1 class="app-title">HOMEC</h1>
-                    <div class="action-buttons">
-                        <button id="btn-add-event" class="action-btn primary">+ New Event</button>
-                        <button id="btn-save-data" class="action-btn secondary">💾 Save to File</button>
-                    </div>
-                </div>
-                <div class="quarter-info">
-                    <span class="quarter-label" id="quarter-label">Loading...</span>
-                    <span class="quarter-span" id="quarter-span"></span>
-                </div>
-            </div>
-            
-            <div class="header-controls">
-                <button class="view-toggle" id="view-toggle">
-                    <span class="toggle-option active" data-view="calendar">📅 Calendar</span>
-                    <span class="toggle-option" data-view="list">📋 List</span>
-                </button>
-                
-                <div class="filter-controls">
-                    <select id="category-filter" class="category-filter">
-                        <option value="all">All Categories</option>
-                        <option value="family">👨‍👩‍👧‍👦 Family</option>
-                        <option value="work">💼 Work</option>
-                        <option value="kid">🎨 Kids</option>
-                        <option value="household">🏡 Household</option>
-                        <option value="holiday">🎊 Holiday</option>
-                        <option value="travel">✈️ Travel</option>
-                    </select>
-                    
-                    <label class="checkbox-filter">
-                        <input type="checkbox" id="priority-only" />
-                        <span>High Priority</span>
-                    </label>
+                <h1 class="app-title">HOMEC</h1>
+                <div class="action-buttons">
+                    <button class="action-btn primary">+ New Event</button>
+                    <button id="btn-save" class="action-btn secondary">💾 Save Data</button>
                 </div>
             </div>
         </header>
 
-        <main class="main-content">
-            <div id="calendar-view" class="view-container active">
-                <div class="months-grid" id="months-grid"></div>
-            </div>
+        <section class="active-section">
+            <div id="active-months-grid" class="months-grid"></div>
+        </section>
 
-            <div id="list-view" class="view-container">
-                <div class="list-sections">
-                    <section class="list-section">
-                        <h2>🚨 Immediate (Next 2 Weeks)</h2>
-                        <div id="list-immediate" class="list-items"></div>
-                    </section>
-                    <section class="list-section">
-                        <h2>📅 This Month</h2>
-                        <div id="list-month" class="list-items"></div>
-                    </section>
-                    <section class="list-section">
-                        <h2>🎯 Aspirational (Unscheduled)</h2>
-                        <div id="list-aspirational" class="list-items"></div>
-                    </section>
-                </div>
-            </div>
-        </main>
-
-        <div id="event-modal" class="modal">
-            <div class="modal-content">
-                <button class="modal-close" id="modal-close">&times;</button>
-                <div id="modal-body"></div>
-                <div class="modal-footer">
-                    <button id="btn-edit-event" class="modal-btn">✏️ Edit Event</button>
-                </div>
-            </div>
-        </div>
-
-        <div id="edit-modal" class="modal">
-            <div class="modal-content">
-                <button class="modal-close" id="edit-modal-close">&times;</button>
-                <h2 id="edit-modal-title">Edit Event</h2>
-                <form id="event-form">
-                    <input type="hidden" id="edit-id">
-                    
-                    <div class="form-group">
-                        <label>Title</label>
-                        <input type="text" id="edit-title" required>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Date</label>
-                            <input type="date" id="edit-date" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Time</label>
-                            <input type="text" id="edit-time" placeholder="e.g. 2:00 PM">
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Category</label>
-                            <select id="edit-category">
-                                <option value="family">Family</option>
-                                <option value="work">Work</option>
-                                <option value="kid">Kid</option>
-                                <option value="household">Household</option>
-                                <option value="holiday">Holiday</option>
-                                <option value="travel">Travel</option>
-                            </select>
-                        </div>
-                        <div class="form-group checkbox-group">
-                            <label>
-                                <input type="checkbox" id="edit-priority"> High Priority
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Notes</label>
-                        <textarea id="edit-notes" rows="3"></textarea>
-                    </div>
-
-                    <div class="form-actions">
-                        <button type="button" id="btn-delete-event" class="btn-danger">Delete</button>
-                        <button type="submit" class="btn-save">Save Changes</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <div id="conflict-banner" class="conflict-banner hidden">
-            <div class="conflict-content">
-                <span class="conflict-icon">⚠️</span>
-                <span class="conflict-text" id="conflict-text"></span>
-                <button class="conflict-dismiss" id="conflict-dismiss">Dismiss</button>
-            </div>
-        </div>
+        <section class="horizon-section">
+            <h2 class="section-title">The Horizon (Next 4 Months)</h2>
+            <div id="horizon-list" class="horizon-container"></div>
+        </section>
     </div>
 
-    <script src="js/app.js"></script>
+    <script src="data.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
