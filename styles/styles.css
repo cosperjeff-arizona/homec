@@ -229,7 +229,7 @@ body {
 
 .day-cell {
   background: var(--bg-secondary);
-  min-height: 80px;
+  min-height: 100px; /* UPDATED: Taller to fit wrapped text */
   padding: 4px;
   position: relative;
   cursor: pointer;
@@ -266,7 +266,7 @@ body {
   margin-bottom: 2px;
 }
 
-/* Event Dots */
+/* Event Dots - UPDATED for text wrapping */
 .day-events {
   display: flex;
   flex-direction: column;
@@ -274,14 +274,14 @@ body {
 }
 
 .event-dot {
-  font-size: 0.65rem;
-  padding: 1px 4px;
-  border-radius: 2px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-size: 0.7rem;
+  padding: 3px 4px;
+  border-radius: 3px;
+  white-space: normal;      /* UPDATED: Allows wrapping */
+  line-height: 1.2;         /* UPDATED: Better spacing for wrapped lines */
+  margin-bottom: 2px;
   color: #1a1a1a;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .event-dot.priority {
