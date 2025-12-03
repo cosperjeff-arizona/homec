@@ -1,161 +1,119 @@
-# HOMEC - Family Calendar System
+Markdown
 
-**Traditional Monthly Calendar View**
+# HOMEC - Family Command Center
 
-A clean, mobile-friendly family calendar with traditional monthly grid layout.
+**A privacy-first, rolling 6-month dashboard for family situational awareness.**
 
-## Files
+HOMEC (Home Operations & Management / Electronic Calendar) is a custom-built web application designed to replace scattered digital calendars with a single, "at-a-glance" dashboard. It prioritizes clarity, privacy, and local control.
 
-```
-homec/
-├── index.html              # Main app structure
-├── app.js                  # Calendar rendering logic
-├── styles.css              # Dark theme styling
-└── quarter-2025-Q4.js      # Q4 2025 data
-```
+## 🧠 The Philosophy: "Clear Mind, Clear Space"
 
-## What Changed
+Most calendar apps bury the future in hidden tabs or clutter the present with irrelevant distant dates. HOMEC solves this by adopting a **Rolling Horizon** approach:
 
-**✨ New Design:**
-- **Traditional monthly calendars** - 7-column grid layout (Sun-Sat)
-- **2x1 card layout** - Two months in first row, one in second row
-- **Cleaner file names** - No "homec-" prefix on every file
-- **Better mobile UX** - Compact, responsive, familiar calendar view
-- **Day-based events** - Events appear in their day cells, not in week cards
-
-**What Stayed:**
-- Same data structure (quarter-2025-Q4.js unchanged)
-- Event detail modal
-- List view
-- Category filtering
-- Conflict detection
-
-## Quick Start
-
-1. **Open in browser**: Open `index.html` directly
-2. **Or use local server**: `python -m http.server 8000`
-3. **Explore**:
-   - Click any day with events to see details
-   - Days with multiple events show a list first
-   - Days with single events open directly
-   - Switch to List view for timeline perspective
-   - Filter by category or high priority
-
-## Key Improvements
-
-### Before (Week Cards)
-- Long vertical list of weeks
-- Scroll-heavy on mobile
-- Less intuitive time visualization
-- Hard to see month at a glance
-
-### After (Monthly Calendars)
-- Traditional calendar grid everyone knows
-- See full month at once
-- Better spatial awareness of time
-- Mobile-friendly compact layout
-- Less scrolling, more overview
-
-## Features
-
-✅ **Calendar View**
-- Traditional monthly grid
-- Day cells show event indicators
-- Color-coded by category
-- Today highlighted
-- Holiday/travel days have subtle backgrounds
-
-✅ **Event Interaction**
-- Click day with single event → Opens event detail
-- Click day with multiple events → Shows day's event list
-- Click event from list → Opens event detail
-- All events show category, time, priority
-
-✅ **List View**
-- Immediate (next 2 weeks)
-- This month
-- Aspirational (unscheduled)
-- All prep tasks
-
-✅ **Filtering**
-- Filter by category
-- Show high priority only
-- Real-time calendar updates
-
-✅ **Mobile Responsive**
-- Scales from phone to desktop
-- Single-column on mobile
-- Readable event indicators
-- Touch-friendly
-
-## Data Structure
-
-The `quarter-2025-Q4.js` file structure **did not change**. The app now:
-1. Loads the same weekly data
-2. Reorganizes it by date for calendar rendering
-3. Displays in traditional monthly format
-
-This means:
-- Existing quarter files work as-is
-- AI prompt system can stay the same
-- Data validation remains unchanged
-
-## Design Philosophy
-
-Following your homesteader coding ethos:
-- **Simple** - Traditional calendar layout everyone understands
-- **Maintainable** - Plain JavaScript, no frameworks
-- **Self-reliant** - All code visible and editable
-- **Practical** - Solves the real problem (seeing your month at a glance)
-
-## Next Steps
-
-**If this feels right:**
-
-✅ Phase 1 Complete - Working traditional calendar view
-
-🔄 Phase 2: AI Prompt System
-- Master prompt for quarterly planning
-- Generate quarter data files
-- Validation checklist
-
-🔮 Phase 3: Enhancements
-- Print optimization
-- Month navigation (if you want multi-quarter)
-- Quick edit mode
-- Mobile app (PWA)
-
-## Test It
-
-**December scenarios:**
-1. Look at **Dec 12-16** (Tucson trip) - See split travel across multiple days
-2. Click **Dec 20** (Date night) - High priority with prep tasks
-3. Check **Dec 25** (Christmas) - Holiday highlighting
-4. Filter to "Holiday" category - See just Christmas events
-5. Switch to List view - See immediate prep tasks
-
-**Mobile test:**
-- Open on phone
-- Calendar scales to single column
-- Day cells remain readable
-- Events tap-friendly
-- Modal fills screen nicely
-
-## Feedback Questions
-
-1. **Overview**: Can you see your whole month better now?
-2. **Navigation**: Is it easier to find specific dates?
-3. **Mobile**: Does it work well on your phone?
-4. **Events**: Is the day → event detail flow intuitive?
-5. **Comparison**: Prefer this over the week card layout?
-6. **Missing**: Anything you want back from the old design?
+1.  **Tactical Clarity (The Now):** We need high detail for the immediate future (Current + Next Month).
+2.  **Strategic Awareness (The Horizon):** We need to see "what's coming" (Months 3–6) without the visual noise of empty grids.
+3.  **Digital Sovereignty:** No cloud accounts, no tracking, no external servers. Data lives in a local JavaScript file.
 
 ---
 
-**This redesign prioritizes:**
-- Familiar mental model (traditional calendar)
-- Mobile-first usability
-- Clean, uncluttered interface
-- Quick event access
+## 🖥️ The Dashboard Layout
 
-Let me know what you think!
+The interface is divided into two distinct functional zones:
+
+### 1. The Active Zone (Months 1 & 2)
+* **Format:** Side-by-side interactive calendar grids.
+* **Purpose:** Detailed daily management, recurring routines, and immediate logistics.
+* **Features:**
+    * Full event titles with text wrapping.
+    * Color-coded categories (Family, Work, Kids, Travel, etc.).
+    * High-priority visual indicators.
+
+### 2. The Horizon Zone (Months 3, 4, 5, & 6)
+* **Format:** A streamlined, chronological timeline list.
+* **Purpose:** Long-range planning and "calendar shock" prevention.
+* **Features:**
+    * Filters out daily noise (like laundry or school drop-offs).
+    * Highlights only **Milestones**, **Holidays**, and **High Priority** events.
+    * Allows you to see a major trip or birthday approaching from months away.
+
+---
+
+## 📂 Project Structure
+
+The project uses a clean, framework-free architecture.
+
+```text
+homec/
+├── index.html              # The dashboard skeleton
+├── data.js                 # The database (Single source of truth)
+├── js/
+│   └── app.js              # Logic: Renders grids and lists based on array index
+├── styles/
+│   └── styles.css          # Styling: Dark theme, CSS Grid, Responsive layout
+└── README.md               # Documentation
+⚙️ The Workflow: "The Monthly Ritual"
+Unlike static calendars, HOMEC is a living system. It requires a brief "gardening" session at the start of every month to roll the horizon forward.
+
+The Process (e.g., On January 1st):
+
+Open data.js in your code editor.
+
+Delete the first month object in the months array (the December that just passed).
+
+Add a new month object to the end of the months array (June).
+
+Save the file.
+
+The Result: Instantly, January slides left to become the first grid, February becomes the second grid, and June appears at the bottom of the Horizon list.
+
+📝 Data Structure
+All data is stored in data.js as a global window object.
+
+JavaScript
+
+window.calendarData = {
+  meta: { generated: "2025-12-03" },
+  
+  // The Rolling Array
+  // Indices [0, 1] render as GRIDS
+  // Indices [2, 3, 4, 5] render as LISTS
+  months: [
+    {
+      id: "2025-12",
+      name: "December 2025",
+      events: [
+        { 
+          date: "2025-12-25", 
+          title: "Christmas", 
+          category: "holiday", 
+          priority: "high" 
+        }
+      ]
+    },
+    // ... January, February, March, April, May ...
+  ],
+
+  categories: {
+    family: { color: "#4ECDC4", icon: "👨‍👩‍👧‍👦" },
+    work:   { color: "#FF6B6B", icon: "💼" },
+    kid:    { color: "#FFE66D", icon: "🎨" }
+    // ...
+  }
+};
+🎨 Customization & Tech Stack
+Tech: Vanilla JavaScript (ES6), HTML5, CSS3. No Node.js, React, or build steps required.
+
+Styling: Uses CSS Variables for easy theming.
+
+To change colors: Edit :root variables in styles/styles.css.
+
+Responsive: automatically stacks grids vertically on mobile devices for easy phone access.
+
+🔒 Privacy & Security
+Local Execution: All code runs in the client's browser.
+
+No Persistence: By default, data is read-only from data.js.
+
+Save Feature: The "Save Data" button creates a JSON download of the current state, ensuring you never lose data even if you clear your browser cache.
+
+Built for the prepared mind.
