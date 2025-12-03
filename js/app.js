@@ -39,7 +39,7 @@ class HomecCalendar {
   updateHeader() {
     const quarterLabel = document.getElementById('quarter-label');
     const quarterSpan = document.getElementById('quarter-span');
-    quarterLabel.textContent = `Q${this.data.meta.quarter} ${this.data.meta.year}`;
+    quarterLabel.textContent = `${this.data.meta.quarter} ${this.data.meta.year}`;
     quarterSpan.textContent = this.data.meta.span;
   }
 
