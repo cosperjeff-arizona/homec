@@ -6,6 +6,7 @@ class HomecCalendar {
   }
 
   async init() {
+    // Load data from global variable set in data.js
     if (window.calendarData) {
       this.data = window.calendarData;
       this.renderApp();
@@ -16,21 +17,23 @@ class HomecCalendar {
   }
 
   renderApp() {
+    // 0. Render Weekly Agenda (Tactical)
     this.renderWeeklyView();
 
+    // 1. Render Active Grids (Months 0 and 1)
     const activeContainer = document.getElementById('active-months-grid');
     activeContainer.innerHTML = '';
     
-    // Render first 2 months
+    // Safety check: ensure we have at least 2 months
     const activeMonths = this.data.months.slice(0, 2);
     activeMonths.forEach(month => {
       activeContainer.appendChild(this.createMonthCard(month));
     });
 
+    // 2. Render Horizon List (Months 2 through 5)
     const horizonContainer = document.getElementById('horizon-list');
     horizonContainer.innerHTML = '';
     
-    // Render next 4 months
     const horizonMonths = this.data.months.slice(2, 6);
     horizonMonths.forEach(month => {
       if (month.events.length > 0) {
@@ -42,20 +45,28 @@ class HomecCalendar {
   // --- COMPONENT: Weekly View ---
   renderWeeklyView() {
     const container = document.getElementById('weekly-agenda');
+    if (!container) return; // Guard clause in case HTML isn't updated
     container.innerHTML = '';
     
+    // 1. Get Start of Week (Sunday)
     const today = new Date();
-    const dayOfWeek = today.getDay(); 
+    const dayOfWeek = today.getDay(); // 0 (Sun) - 6 (Sat)
     const startOfWeek = new Date(today);
     startOfWeek.setDate(today.getDate() - dayOfWeek);
 
+    // Format week param for URL (e.g., "2025-12-7")
     const weekParam = `${startOfWeek.getFullYear()}-${startOfWeek.getMonth() + 1}-${startOfWeek.getDate()}`;
+
+    // Update Label
     const endOfWeek = new Date(startOfWeek);
     endOfWeek.setDate(startOfWeek.getDate() + 6);
     
     const labelEl = document.getElementById('current-week-label');
-    if(labelEl) labelEl.textContent = `${startOfWeek.toLocaleDateString()} - ${endOfWeek.toLocaleDateString()}`;
+    if(labelEl) {
+        labelEl.textContent = `${startOfWeek.toLocaleDateString()} - ${endOfWeek.toLocaleDateString()}`;
+    }
 
+    // 2. Loop 7 Days
     for (let i = 0; i < 7; i++) {
       const currentDay = new Date(startOfWeek);
       currentDay.setDate(startOfWeek.getDate() + i);
@@ -65,6 +76,7 @@ class HomecCalendar {
       const dayNum = currentDay.getDate();
       const isToday = dateKey === today.toISOString().split('T')[0];
 
+      // Create Column
       const col = document.createElement('div');
       col.className = `day-column ${isToday ? 'is-today' : ''}`;
       col.innerHTML = `
@@ -73,28 +85,42 @@ class HomecCalendar {
           <div class="day-date-large">${dayNum}</div>
         </div>
         <div class="day-column-body">
-          <div class="time-block" id="block-morning-${dateKey}"><div class="block-label">Morning</div></div>
-          <div class="time-block" id="block-afternoon-${dateKey}"><div class="block-label">Afternoon</div></div>
-          <div class="time-block" id="block-evening-${dateKey}"><div class="block-label">Evening</div></div>
-          <div class="meal-block"><div class="block-label">🍽 Dinner</div><div class="meal-item" id="meal-${dateKey}">-</div></div>
+          <div class="time-block" id="block-morning-${dateKey}">
+            <div class="block-label">Morning</div>
+          </div>
+          <div class="time-block" id="block-afternoon-${dateKey}">
+            <div class="block-label">Afternoon</div>
+          </div>
+          <div class="time-block" id="block-evening-${dateKey}">
+            <div class="block-label">Evening</div>
+          </div>
+          <div class="meal-block">
+             <div class="block-label">🍽 Dinner</div>
+             <div class="meal-item" id="meal-${dateKey}">-</div>
+          </div>
         </div>
       `;
       
-      // Allow clicking the day column header to add an event
+      // Click header to add event
       col.querySelector('.day-column-header').addEventListener('click', () => this.openModal(null, dateKey));
-      
+
       container.appendChild(col);
 
+      // 3. Inject Events
       this.data.months.forEach(month => {
         const events = month.events.filter(e => e.date === dateKey);
-        events.forEach(evt => this.renderAgendaItem(evt, dateKey));
+        events.forEach(evt => {
+          this.renderAgendaItem(evt, dateKey);
+        });
       });
 
+      // 4. Inject Routines
       if (this.data.routines) {
         this.data.routines.daily?.forEach(r => this.renderRoutineItem(r, dateKey));
         this.data.routines.weekly?.[i]?.forEach(r => this.renderRoutineItem(r, dateKey));
       }
 
+      // 5. Inject Meals with Dynamic Links
       if (this.data.meals && this.data.meals[dateKey]) {
         const mealEl = col.querySelector(`#meal-${dateKey}`);
         const dayNameFull = currentDay.toLocaleDateString('en-US', { weekday: 'long' }).toLowerCase();
@@ -122,12 +148,12 @@ class HomecCalendar {
       const catColor = this.data.categories[evt.category]?.color || '#ccc';
       el.style.borderLeftColor = catColor;
       
-      // Make weekly items clickable
+      // Click to edit
       el.addEventListener('click', (e) => {
         e.stopPropagation();
         this.openModal(evt);
       });
-      
+
       block.appendChild(el);
     }
   }
@@ -190,7 +216,7 @@ class HomecCalendar {
         
         // CLICK EVENT: Edit existing event
         dot.addEventListener('click', (e) => {
-            e.stopPropagation(); // Prevent opening "New Event" on cell click
+            e.stopPropagation(); 
             this.openModal(evt);
         });
 
@@ -207,10 +233,13 @@ class HomecCalendar {
     return card;
   }
 
+  // --- COMPONENT: Horizon List ---
   createHorizonGroup(month) {
     const group = document.createElement('div');
     group.className = 'horizon-month-group';
+    
     group.innerHTML = `<h3 class="horizon-month-title">${month.name}</h3>`;
+    
     const list = document.createElement('div');
     list.className = 'horizon-events';
     
@@ -218,6 +247,7 @@ class HomecCalendar {
       const item = document.createElement('div');
       item.className = 'horizon-item';
       const cat = this.data.categories[evt.category];
+      
       item.innerHTML = `
         <span class="horizon-date">${new Date(evt.date).getDate()}</span>
         <span class="horizon-icon">${cat ? cat.icon : '•'}</span>
@@ -227,12 +257,12 @@ class HomecCalendar {
       item.addEventListener('click', () => this.openModal(evt));
       list.appendChild(item);
     });
+
     group.appendChild(list);
     return group;
   }
 
   // --- LOGIC: Modal & Data Management ---
-
   openModal(event = null, dateStr = null) {
     this.activeEvent = event;
     const modal = document.getElementById('event-modal');
@@ -314,7 +344,6 @@ class HomecCalendar {
 
   // Helper: Find month array and remove specific object instance
   removeEventFromData(eventObj) {
-      // We iterate all months to find the one containing this exact object reference
       for (let m of this.data.months) {
           const idx = m.events.indexOf(eventObj);
           if (idx !== -1) {
@@ -326,17 +355,15 @@ class HomecCalendar {
 
   // Helper: Find month based on date string and push
   addEventToData(eventObj) {
-      // eventObj.date format is YYYY-MM-DD
       const monthId = eventObj.date.substring(0, 7); // "2025-12"
-      
       const targetMonth = this.data.months.find(m => m.id === monthId);
+      
       if (targetMonth) {
           targetMonth.events.push(eventObj);
-          // Optional: Sort by date/time
+          // Optional: Sort by date
           targetMonth.events.sort((a, b) => a.date.localeCompare(b.date));
       } else {
-          alert("Note: This date is outside the current 6-month horizon. It will be saved but may not be visible.");
-          // In a real app we might create the month or have a "backlog"
+          alert("Note: This date is outside the current 6-month horizon. It will be saved locally but may not appear until you adjust the horizon.");
       }
   }
 
@@ -354,7 +381,8 @@ class HomecCalendar {
     document.getElementById('btn-save').addEventListener('click', () => this.saveToFile());
     
     // New Event Button
-    document.getElementById('btn-new-event').addEventListener('click', () => this.openModal());
+    const newBtn = document.getElementById('btn-new-event');
+    if(newBtn) newBtn.addEventListener('click', () => this.openModal());
 
     // Modal Actions
     document.querySelector('.modal-close').addEventListener('click', () => this.closeModal());
