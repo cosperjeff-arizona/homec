@@ -1,11 +1,11 @@
 // HOMEC - Rolling 6-Month Data
-// Current Window: December 2025 - May 2026
-// Generated: December 3, 2025
+// Current Window: December 2025 - June 2026
+// Generated: December 4, 2025
 
 const calendarData = {
   meta: {
-    generated: "2025-12-03",
-    version: "2.3-post-holiday-reset"
+    generated: "2025-12-04",
+    version: "2.4-updated"
   },
 
   // The 6-month window (Index 0-1 = Grids, Index 2-5 = Horizon List)
@@ -17,17 +17,18 @@ const calendarData = {
         // RECURRING
         { date: "2025-12-01", title: "Spidey at Preschool", category: "kid", time: "7:30 AM" },
         { date: "2025-12-02", title: "Spin in Office", category: "work", time: "all-day" },
+        { date: "2025-12-05", title: "🎅 Visit Santa & Dinner at Biltmore", category: "family", priority: "high", time: "evening" },
         { date: "2025-12-06", title: "Niece's Basketball", category: "family", time: "morning" },
         
         // SPECIAL EVENTS
         { date: "2025-12-07", title: "Start Holiday Shopping", category: "household", priority: "medium" },
         { date: "2025-12-10", title: "Tucson Trip Prep Deadline", category: "travel", priority: "high" },
-        { date: "2025-12-12", title: "🚗 Tucson Trip Begins", category: "travel", priority: "high", time: "all-day" },
+        { date: "2025-12-11", title: "🚗 Tucson Trip Begins", category: "travel", priority: "high", time: "all-day" },
         { date: "2025-12-13", title: "Tucson - Family Day", category: "travel", time: "all-day" },
+        { date: "2025-12-14", title: "🏃‍♀️ Aunt Mel's Half Marathon", category: "family", priority: "high", time: "morning" },
         { date: "2025-12-14", title: "Spin & Spidey Return", category: "travel", time: "afternoon" },
         { date: "2025-12-16", title: "Ghost Spider Returns", category: "travel", time: "afternoon" },
         { date: "2025-12-18", title: "Gift Wrapping Session", category: "household", priority: "high", time: "evening" },
-        { date: "2025-12-19", title: "Last Day of Preschool", category: "kid", type: "milestone" },
         { date: "2025-12-20", title: "❤️ Date Night", category: "family", priority: "high", time: "evening" },
         { date: "2025-12-25", title: "🎄 Christmas Day", category: "holiday", priority: "high", time: "all-day" },
         { date: "2025-12-31", title: "🎉 New Year's Eve", category: "holiday", time: "evening" }
@@ -38,7 +39,6 @@ const calendarData = {
       name: "January 2026",
       events: [
         { date: "2026-01-01", title: "New Year's Day", category: "holiday", time: "all-day" },
-        { date: "2026-01-05", title: "Spidey Back to School", category: "kid", priority: "high" },
         { date: "2026-01-05", title: "🎂 Spin's Birthday", category: "family", priority: "high" },
         { date: "2026-01-19", title: "MLK Day (No School)", category: "kid", time: "all-day" },
         { date: "2026-01-24", title: "Monthly Meal Planning", category: "household", time: "morning" }
@@ -57,8 +57,7 @@ const calendarData = {
       id: "2026-03",
       name: "March 2026",
       events: [
-        { date: "2026-03-23", title: "🎂 Spidey's 4th Birthday", category: "family", priority: "high" },
-        { date: "2026-03-30", title: "Spring Break Begins", category: "kid" }
+        { date: "2026-03-23", title: "🎂 Spidey's 4th Birthday", category: "family", priority: "high" }
       ]
     },
     {
@@ -74,6 +73,13 @@ const calendarData = {
       events: [
         { date: "2026-05-03", title: "🎂 Ghost Spider's Birthday", category: "family", priority: "high" },
         { date: "2026-05-25", title: "Memorial Day", category: "holiday" }
+      ]
+    },
+    {
+      id: "2026-06",
+      name: "June 2026",
+      events: [
+        { date: "2026-06-25", title: "🎂 Trace-E's Birthday", category: "family", priority: "high" }
       ]
     }
   ],
@@ -98,9 +104,36 @@ const calendarData = {
       "0": [ // Sunday
         { title: "Batch Cook Muffins", time: "afternoon" },
         { title: "Prep Veggies (Peppers/Onions)", time: "afternoon" }
-      ], 
-      "1": [ { title: "Water Plants", time: "morning" } ], 
-      "2": [ { title: "Trash to Curb", time: "evening" } ] 
+      ],
+      "1": [ // Monday
+        { title: "Water Plants", time: "morning" },
+        { title: "Preschool Dropoff", time: "morning" },
+        { title: "Trace-E Swim Lesson (1pm)", time: "afternoon" },
+        { title: "Preschool Pickup", time: "afternoon" },
+        { title: "Cook Dinner", time: "evening" }
+      ],
+      "2": [ // Tuesday
+        { title: "Preschool Dropoff", time: "morning" },
+        { title: "Preschool Pickup", time: "afternoon" },
+        { title: "Trash to Curb", time: "evening" },
+        { title: "Cook Dinner", time: "evening" }
+      ],
+      "3": [ // Wednesday
+        { title: "Preschool Dropoff", time: "morning" },
+        { title: "Preschool Pickup", time: "afternoon" },
+        { title: "Spidey Swim Lesson (5pm)", time: "afternoon" },
+        { title: "Cook Dinner", time: "evening" }
+      ],
+      "4": [ // Thursday
+        { title: "Preschool Dropoff", time: "morning" },
+        { title: "Preschool Pickup", time: "afternoon" },
+        { title: "Cook Dinner", time: "evening" }
+      ],
+      "5": [ // Friday
+        { title: "Preschool Dropoff", time: "morning" },
+        { title: "Preschool Pickup", time: "afternoon" },
+        { title: "Cook Dinner", time: "evening" }
+      ]
     }
   },
 
