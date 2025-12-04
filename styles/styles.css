@@ -374,7 +374,22 @@ body {
 
 .meal-item {
   font-size: 0.8rem;
-  color: #FFE66D; /* Use the Kids/Yellow color for food or custom */
+  color: #FFE66D; 
+}
+
+/* Meal Links */
+.meal-link {
+  color: #FFE66D;
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(255, 230, 109, 0.5);
+  transition: all 0.2s;
+  display: block; /* Make the whole text area clickable */
+}
+
+.meal-link:hover {
+  color: #fff;
+  border-bottom-style: solid;
+  cursor: pointer;
 }
 
 /* Highlight Today */
