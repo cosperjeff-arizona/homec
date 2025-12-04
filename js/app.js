@@ -52,6 +52,10 @@ class HomecCalendar {
     const startOfWeek = new Date(today);
     startOfWeek.setDate(today.getDate() - dayOfWeek);
 
+    // Format week param for URL (e.g., "2025-12-7")
+    // Note: getMonth() is 0-indexed, so we add 1.
+    const weekParam = `${startOfWeek.getFullYear()}-${startOfWeek.getMonth() + 1}-${startOfWeek.getDate()}`;
+
     // Update Label
     const endOfWeek = new Date(startOfWeek);
     endOfWeek.setDate(startOfWeek.getDate() + 6);
@@ -98,7 +102,6 @@ class HomecCalendar {
       container.appendChild(col);
 
       // 3. Inject Events
-      // We search ALL months because a week can straddle two months
       this.data.months.forEach(month => {
         const events = month.events.filter(e => e.date === dateKey);
         events.forEach(evt => {
@@ -106,25 +109,29 @@ class HomecCalendar {
         });
       });
 
-      // 4. Inject Routines (Granular Detail)
+      // 4. Inject Routines
       if (this.data.routines) {
-        // Daily
         this.data.routines.daily?.forEach(r => this.renderRoutineItem(r, dateKey));
-        // Weekly specific
         this.data.routines.weekly?.[i]?.forEach(r => this.renderRoutineItem(r, dateKey));
       }
 
-      // 5. Inject Meals
+      // 5. Inject Meals with Dynamic Links
       if (this.data.meals && this.data.meals[dateKey]) {
         const mealEl = col.querySelector(`#meal-${dateKey}`);
-        mealEl.textContent = this.data.meals[dateKey].dinner;
+        
+        // Generate Dynamic URL
+        // Day name needs to be lowercase full name (e.g., 'thursday')
+        const dayNameFull = currentDay.toLocaleDateString('en-US', { weekday: 'long' }).toLowerCase();
+        const recipeUrl = `https://mealplanner-ruby.vercel.app/pages/recipe-${dayNameFull}.html?week=${weekParam}`;
+        
+        // Render as Link
+        mealEl.innerHTML = `<a href="${recipeUrl}" class="meal-link" target="_blank">${this.data.meals[dateKey].dinner}</a>`;
       }
     }
   }
 
   renderAgendaItem(evt, dateKey) {
-    // Sort into Morning/Afternoon/Evening based on time string
-    let blockId = `block-morning-${dateKey}`; // Default
+    let blockId = `block-morning-${dateKey}`;
     const t = (evt.time || "").toLowerCase();
     
     if (t.includes('pm') || t.includes('evening') || t.includes('night') || t.includes('17:') || t.includes('18:') || t.includes('19:')) {
@@ -145,7 +152,6 @@ class HomecCalendar {
   }
 
   renderRoutineItem(routine, dateKey) {
-    // Routines go to morning/evening based on preference
     const blockId = `block-${routine.time}-${dateKey}`;
     const block = document.getElementById(blockId);
     if (block) {
@@ -165,7 +171,6 @@ class HomecCalendar {
     const grid = document.createElement('div');
     grid.className = 'calendar-grid';
     
-    // Headers
     ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].forEach(d => {
       const h = document.createElement('div');
       h.className = 'day-header';
@@ -173,19 +178,16 @@ class HomecCalendar {
       grid.appendChild(h);
     });
 
-    // Logic to draw days
     const [year, monthNum] = month.id.split('-').map(Number);
     const firstDay = new Date(year, monthNum - 1, 1).getDay();
     const daysInMonth = new Date(year, monthNum, 0).getDate();
 
-    // Empty cells
     for(let i=0; i<firstDay; i++) {
       const empty = document.createElement('div');
       empty.className = 'day-cell empty';
       grid.appendChild(empty);
     }
 
-    // Days
     for(let d=1; d<=daysInMonth; d++) {
       const dateKey = `${year}-${String(monthNum).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
       const dayEvents = month.events.filter(e => e.date === dateKey);
@@ -194,7 +196,6 @@ class HomecCalendar {
       cell.className = 'day-cell';
       cell.innerHTML = `<div class="day-number">${d}</div>`;
       
-      // Check if today
       const todayStr = new Date().toISOString().split('T')[0];
       if (dateKey === todayStr) cell.classList.add('today');
 
@@ -208,9 +209,7 @@ class HomecCalendar {
         cell.appendChild(dot);
       });
 
-      // Simple click to log for now
       cell.addEventListener('click', () => console.log('Clicked', dateKey));
-      
       grid.appendChild(cell);
     }
 
@@ -245,7 +244,6 @@ class HomecCalendar {
     return group;
   }
 
-  // Helper: Save JSON
   saveToFile() {
     const dataStr = JSON.stringify(this.data, null, 2);
     const blob = new Blob([dataStr], { type: 'application/json' });
