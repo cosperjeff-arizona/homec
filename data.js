@@ -5,7 +5,7 @@
 const calendarData = {
   meta: {
     generated: "2025-12-03",
-    version: "2.0-rolling"
+    version: "2.1-weekly-integrated"
   },
 
   // The 6-month window (Index 0-1 = Grids, Index 2-5 = Horizon List)
@@ -77,6 +77,28 @@ const calendarData = {
       ]
     }
   ],
+
+  // NEW: Granular Weekly Data
+  meals: {
+    "2025-12-01": { dinner: "🍝 Spaghetti & Meatballs" },
+    "2025-12-02": { dinner: "🌮 Taco Tuesday" },
+    "2025-12-03": { dinner: "🥗 Grilled Chicken Salad" },
+    "2025-12-04": { dinner: "🥡 Leftovers" },
+    "2025-12-05": { dinner: "🍕 Pizza Night" },
+    "2025-12-06": { dinner: "🥣 Soup & Sandwiches" },
+    "2025-12-07": { dinner: "🥩 Sunday Roast" }
+  },
+
+  routines: {
+    "daily": [
+      { title: "Empty Dishwasher", time: "morning" },
+      { title: "10m Tidy Up", time: "evening" }
+    ],
+    "weekly": {
+      "1": [ { title: "Water Plants", time: "morning" } ], // Monday (0=Sun, 1=Mon)
+      "2": [ { title: "Trash to Curb", time: "evening" } ]  // Tuesday
+    }
+  },
 
   categories: {
     family: { color: "#4ECDC4", icon: "👨‍👩‍👧‍👦", label: "Family" },
