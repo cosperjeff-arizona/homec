@@ -12,7 +12,7 @@
             <div class="header-content">
                 <h1 class="app-title">HOMEC</h1>
                 <div class="action-buttons">
-                    <button class="action-btn primary">+ New Event</button>
+                    <button id="btn-new-event" class="action-btn primary">+ New Event</button>
                     <button id="btn-save" class="action-btn secondary">💾 Save Data</button>
                 </div>
             </div>
@@ -36,6 +36,54 @@
             <h2 class="section-title">The Horizon (Next 4 Months)</h2>
             <div id="horizon-list" class="horizon-container"></div>
         </section>
+    </div>
+
+    <div id="event-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h2 id="modal-title">Edit Event</h2>
+            <form id="event-form">
+                <div class="form-group">
+                    <label>Event Title</label>
+                    <input type="text" id="event-title" required placeholder="e.g. Doctor Appt">
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input type="date" id="event-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select id="event-category">
+                            <option value="family">Family</option>
+                            <option value="work">Work</option>
+                            <option value="kid">Kids</option>
+                            <option value="household">Household</option>
+                            <option value="holiday">Holiday</option>
+                            <option value="travel">Travel</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                     <div class="form-group">
+                        <label>Time (Optional)</label>
+                        <input type="text" id="event-time" placeholder="e.g. 2:00 PM or all-day">
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                            <input type="checkbox" id="event-priority"> High Priority
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" id="btn-delete-event" class="btn-danger">Delete</button>
+                    <button type="submit" class="btn-save">Save Event</button>
+                </div>
+            </form>
+        </div>
     </div>
 
     <script src="data.js"></script>
