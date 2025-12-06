@@ -15,7 +15,6 @@ const calendarData = {
       name: "December 2025",
       events: [
         // RECURRING
-        { date: "2025-12-01", title: "Spidey at Preschool", category: "kid", time: "7:30 AM" },
         { date: "2025-12-02", title: "Spin in Office", category: "work", time: "all-day" },
         { date: "2025-12-05", title: "🎅 Visit Santa & Dinner at Biltmore", category: "family", priority: "high", time: "evening" },
         { date: "2025-12-06", title: "Niece's Basketball", category: "family", time: "morning" },
@@ -106,7 +105,6 @@ const calendarData = {
         { title: "Prep Veggies (Peppers/Onions)", time: "afternoon" }
       ],
       "1": [ // Monday
-        { title: "Water Plants", time: "morning" },
         { title: "Preschool Dropoff", time: "morning" },
         { title: "Trace-E Swim Lesson (1pm)", time: "afternoon" },
         { title: "Preschool Pickup", time: "afternoon" },
