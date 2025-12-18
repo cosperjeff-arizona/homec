@@ -2,6 +2,7 @@ class HomecCalendar {
   constructor() {
     this.data = null;
     this.activeEvent = null; // Track which event we are editing
+    this.currentWeekStart = null; // Track current week for detailed view
     this.init();
   }
 
@@ -45,14 +46,15 @@ class HomecCalendar {
   // --- COMPONENT: Weekly View ---
   renderWeeklyView() {
     const container = document.getElementById('weekly-agenda');
-    if (!container) return; // Guard clause in case HTML isn't updated
+    if (!container) return;
     container.innerHTML = '';
     
     // 1. Get Start of Week (Sunday)
     const today = new Date();
-    const dayOfWeek = today.getDay(); // 0 (Sun) - 6 (Sat)
+    const dayOfWeek = today.getDay();
     const startOfWeek = new Date(today);
     startOfWeek.setDate(today.getDate() - dayOfWeek);
+    this.currentWeekStart = startOfWeek; // Store for detailed view
 
     // Format week param for URL (e.g., "2025-12-7")
     const weekParam = `${startOfWeek.getFullYear()}-${startOfWeek.getMonth() + 1}-${startOfWeek.getDate()}`;
@@ -144,9 +146,18 @@ class HomecCalendar {
     if (block) {
       const el = document.createElement('div');
       el.className = 'agenda-item';
-      el.textContent = evt.title;
+      
+      // Add category tag
+      const cat = this.data.categories[evt.category];
+      const tag = `<span class="tag ${evt.category}">${cat ? cat.label : evt.category}</span>`;
+      el.innerHTML = `${tag} ${evt.title}`;
+      
       const catColor = this.data.categories[evt.category]?.color || '#ccc';
       el.style.borderLeftColor = catColor;
+      
+      if (evt.priority === 'high') {
+        el.classList.add('focus');
+      }
       
       // Click to edit
       el.addEventListener('click', (e) => {
@@ -260,6 +271,82 @@ class HomecCalendar {
 
     group.appendChild(list);
     return group;
+  }
+
+  // --- NEW: Detailed Week View ---
+  renderDetailedWeek() {
+    const modal = document.getElementById('detail-week-modal');
+    const content = document.getElementById('detail-week-content');
+    
+    if (!this.currentWeekStart) return;
+    
+    // Check if we have detailed data for this week
+    const weekKey = this.currentWeekStart.toISOString().split('T')[0];
+    const detailedWeek = this.data.detailedWeeks?.[weekKey];
+    
+    if (!detailedWeek) {
+      content.innerHTML = `
+        <div style="text-align: center; padding: 40px; color: var(--text-muted);">
+          <p>No detailed hourly data available for this week.</p>
+          <p style="margin-top: 12px; font-size: 0.9rem;">This feature shows hour-by-hour schedules when available.</p>
+        </div>
+      `;
+      modal.classList.add('visible');
+      return;
+    }
+
+    // Build the hourly table
+    let html = `
+      <div class="table-wrap">
+        <table class="hourly-table">
+          <thead>
+            <tr>
+              <th class="timecol">Time Block</th>
+    `;
+    
+    // Add day headers
+    detailedWeek.days.forEach(day => {
+      const date = new Date(day.date);
+      const dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+      html += `<th class="daycol">${day.dayName} ${dateStr}</th>`;
+    });
+    
+    html += `</tr></thead><tbody>`;
+    
+    // Add rows for each time block
+    detailedWeek.timeBlocks.forEach(block => {
+      html += `<tr><th class="timecol">${block}</th>`;
+      
+      detailedWeek.days.forEach(day => {
+        const events = day.blocks[block] || [];
+        html += `<td><div class="cell">`;
+        
+        events.forEach(evt => {
+          const cat = this.data.categories[evt.category];
+          const focusClass = evt.focus ? ' focus' : '';
+          html += `
+            <div class="event${focusClass}">
+              <span class="event-time">${evt.time}</span>
+              <span class="tag ${evt.category}">${cat ? cat.label : evt.category}</span>
+              <span class="event-text">${evt.title}</span>
+            </div>
+          `;
+        });
+        
+        html += `</div></td>`;
+      });
+      
+      html += `</tr>`;
+    });
+    
+    html += `</tbody></table></div>`;
+    
+    content.innerHTML = html;
+    modal.classList.add('visible');
+  }
+
+  closeDetailedWeek() {
+    document.getElementById('detail-week-modal').classList.remove('visible');
   }
 
   // --- LOGIC: Modal & Data Management ---
@@ -378,21 +465,33 @@ class HomecCalendar {
   }
 
   attachEventListeners() {
+    // Save Button
     document.getElementById('btn-save').addEventListener('click', () => this.saveToFile());
     
     // New Event Button
     const newBtn = document.getElementById('btn-new-event');
     if(newBtn) newBtn.addEventListener('click', () => this.openModal());
 
+    // Detailed Week Button
+    const detailBtn = document.getElementById('btn-detail-week');
+    if(detailBtn) detailBtn.addEventListener('click', () => this.renderDetailedWeek());
+
+    // Close Detailed Week
+    const closeDetailBtn = document.getElementById('btn-close-detail');
+    if(closeDetailBtn) closeDetailBtn.addEventListener('click', () => this.closeDetailedWeek());
+
     // Modal Actions
     document.querySelector('.modal-close').addEventListener('click', () => this.closeModal());
     document.getElementById('event-form').addEventListener('submit', (e) => this.saveEvent(e));
     document.getElementById('btn-delete-event').addEventListener('click', () => this.deleteEvent());
 
-    // Close on background click
+    // Close modals on background click
     window.addEventListener('click', (e) => {
         const modal = document.getElementById('event-modal');
+        const detailModal = document.getElementById('detail-week-modal');
+        
         if (e.target === modal) this.closeModal();
+        if (e.target === detailModal) this.closeDetailedWeek();
     });
   }
 }
