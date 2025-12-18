@@ -1,11 +1,11 @@
-// HOMEC - Rolling 6-Month Data
+// HOMEC - Rolling 6-Month Data (Enhanced Edition)
 // Current Window: December 2025 - June 2026
-// Generated: December 4, 2025
+// Generated: December 17, 2025
 
 const calendarData = {
   meta: {
-    generated: "2025-12-04",
-    version: "2.4-updated"
+    generated: "2025-12-17",
+    version: "3.0-enhanced"
   },
 
   // The 6-month window (Index 0-1 = Grids, Index 2-5 = Horizon List)
@@ -83,17 +83,90 @@ const calendarData = {
     }
   ],
 
-  // NEW: Updated from 'Post-Holiday Reset' Plan
-  meals: {
-    "2025-11-30": { dinner: "🍗 Harvest Chicken Skillet" },      // Sunday
-    "2025-12-01": { dinner: "🌭 Sausage & Pepper Sheet Pan" },   // Monday
-    "2025-12-02": { dinner: "🍚 Korean Beef Bowls" },            // Tuesday
-    "2025-12-03": { dinner: "🏊 Swim Lessons / Dining Out" },    // Wednesday
-    "2025-12-04": { dinner: "🌮 Classic Ground Beef Tacos" },    // Thursday
-    "2025-12-05": { dinner: "🍔 Smashburgers & Oven Fries" },    // Friday
-    "2025-12-06": { dinner: "🥡 Leftovers / Flow" }              // Saturday
+  // ENHANCED: Hourly/Detailed Events for Tactical Week View
+  detailedWeeks: {
+    "2025-12-15": { // Week starting Dec 15, 2025
+      timeBlocks: [
+        "Early morning",
+        "Morning",
+        "Midday", 
+        "Afternoon",
+        "Evening",
+        "Late evening",
+        "Night"
+      ],
+      days: [
+        {
+          date: "2025-12-17",
+          dayName: "Wed",
+          blocks: {
+            "Early morning": [
+              { time: "7:00", title: "Possible preschool drop-off", category: "family" },
+              { time: "7:30–9:00", title: "Commute & settle into office", category: "work" }
+            ],
+            "Morning": [
+              { time: "9:00–12:00", title: "Deep work block", category: "work" }
+            ],
+            "Midday": [
+              { time: "12:00–1:00", title: "Lunch break", category: "personal" }
+            ],
+            "Afternoon": [
+              { time: "1:00–4:00", title: "Meetings & collaboration", category: "work" }
+            ],
+            "Evening": [
+              { time: "5:30–6:30", title: "Dinner prep & family meal", category: "food" },
+              { time: "6:30–7:30", title: "Bedtime routine", category: "family" }
+            ],
+            "Late evening": [
+              { time: "7:30–9:00", title: "Bedtime", category: "family" },
+              { time: "9:00–9:30", title: "Cleanup", category: "home" }
+            ]
+          }
+        },
+        {
+          date: "2025-12-18",
+          dayName: "Thu",
+          blocks: {
+            "Early morning": [
+              { time: "7:00–7:30", title: "Preschool drop-off", category: "family" },
+              { time: "7:30–9:00", title: "Work block", category: "work" }
+            ],
+            "Morning": [
+              { time: "9:00–12:00", title: "Team collaboration", category: "work" }
+            ],
+            "Midday": [
+              { time: "12:00–1:00", title: "Lunch", category: "personal" }
+            ],
+            "Afternoon": [
+              { time: "2:00–3:00", title: "Preschool pickup", category: "family" },
+              { time: "3:00–5:00", title: "Afternoon work", category: "work" }
+            ],
+            "Evening": [
+              { time: "5:30–6:30", title: "Gift wrapping session", category: "household", focus: true },
+              { time: "6:30–7:30", title: "Bedtime routine", category: "family" }
+            ],
+            "Late evening": [
+              { time: "7:30–9:00", title: "Bedtime", category: "family" },
+              { time: "9:00–9:30", title: "Cleanup", category: "home" }
+            ]
+          }
+        }
+      ]
+    }
   },
 
+  // Meal planning data
+  meals: {
+    "2025-11-30": { dinner: "🍗 Harvest Chicken Skillet" },
+    "2025-12-01": { dinner: "🌭 Sausage & Pepper Sheet Pan" },
+    "2025-12-02": { dinner: "🍚 Korean Beef Bowls" },
+    "2025-12-03": { dinner: "🏊 Swim Lessons / Dining Out" },
+    "2025-12-04": { dinner: "🌮 Classic Ground Beef Tacos" },
+    "2025-12-05": { dinner: "🍔 Smashburgers & Oven Fries" },
+    "2025-12-06": { dinner: "🥡 Leftovers / Flow" }
+  },
+
+  // Daily and weekly routines
   routines: {
     "daily": [
       { title: "Empty Dishwasher", time: "morning" },
@@ -135,13 +208,17 @@ const calendarData = {
     }
   },
 
+  // ENHANCED: Category definitions with icons and colors
   categories: {
     family: { color: "#4ECDC4", icon: "👨‍👩‍👧‍👦", label: "Family" },
     work: { color: "#FF6B6B", icon: "💼", label: "Work" },
     kid: { color: "#FFE66D", icon: "🎨", label: "Kids" },
     household: { color: "#95E1D3", icon: "🏡", label: "Household" },
     holiday: { color: "#DDA15E", icon: "🎊", label: "Holiday" },
-    travel: { color: "#87CEEB", icon: "✈️", label: "Travel" }
+    travel: { color: "#87CEEB", icon: "✈️", label: "Travel" },
+    food: { color: "#FFB347", icon: "🍽️", label: "Food" },
+    home: { color: "#C3B1E1", icon: "🏠", label: "Home" },
+    personal: { color: "#A0D2DB", icon: "⭐", label: "Personal" }
   }
 };
 
